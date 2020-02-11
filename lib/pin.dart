@@ -4,21 +4,24 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:pin_entry_text_field/pin_entry_text_field.dart';
 import 'package:saldo/saldo.dart';
+import 'dropdown.dart';
 
-class Pin extends StatelessWidget {
-  String notabb;
+
+
+class MPin extends StatelessWidget {
+
   String pinn;
-  Pin(this.notabb, this.pinn);
-
+  String notabb;
+  MPin({this.notabb, this.pinn});
   @override
   Widget build(BuildContext context) {
     Future<Widget> sld(pin, notabb) async {
       var url = "http://192.168.43.218:8090/Server/test";
       Map json = {
         'kdid': 'SLD',
-        'userid': '08151646351',
+        'userid': '085643391632',
         'traceid': '3284284',
-        'data': {'pin': pin, 'imei': '863147040869906', 'notab': notabb}
+        'data': {'pin': pin, 'imei': '865689030885309', 'notab': notabb}
       };
       HttpClientResponse response;
       var client = HttpClient();
@@ -77,7 +80,7 @@ class Pin extends StatelessWidget {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(
-                    top: 180.0,
+                    top: 80.0,
                   ),
                   child: Column(
                     children: <Widget>[
@@ -108,6 +111,7 @@ class Pin extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: PinEntryTextField(
+                
                 isTextObscure: true,
                 showFieldAsBox: false,
                 onSubmit: (String pin) {

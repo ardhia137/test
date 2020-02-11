@@ -65,7 +65,10 @@ class _MyHomePageState extends State<MyHomePage> {
       Future<Widget>hme() async{
   var url = "http://192.168.43.218:8090/Server/test";
   Map json = {
-    'kdid':'HME','userid':'08151646351','traceid':'3284284','data':{'nocif':'01000617','imei':'863147040869906'}
+    'kdid': 'LGN',
+        'userid': '085643391632',
+        'traceid': '909090',
+        'data': {'user': '08151646351', 'pas': '111', 'imei': '865689030885309'}
   };
   HttpClientResponse response;
   var client = HttpClient();
@@ -80,15 +83,20 @@ class _MyHomePageState extends State<MyHomePage> {
     response.transform(utf8.decoder).listen((contents){
       // print(contents);
       var jsondata = jsonDecode(contents);
-      var p = jsondata['notab'];
-      var pinn = jsondata['pin'];
-      var ntb = jsonEncode(p);
-      print(jsondata['pin']);
+      var pinn = jsondata['PIN'];
+      // var p = jsondata['notab'];
+      // var ntb = jsonEncode(p);
+      var jsonall = jsonEncode(jsondata['data']);
+      var b = jsonDecode(jsonall);
+      var p = b['notab'];
+      // var ntb = jsonEncode(dcntb);
+      print(pinn);
+      print(p);
       print(jsondata['rc']);
       // print(jsondata['notab']);
       if(jsondata['rc']=='000'){
     var route = new MaterialPageRoute(
-          builder: (BuildContext context) => new Saldo(notab: p, pin:jsondata['pin']),
+          builder: (BuildContext context) => new Saldo(notab: p, pin:pinn),
         );
         Navigator.of(context).push(route);
    }
